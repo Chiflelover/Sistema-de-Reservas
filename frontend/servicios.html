@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Especialidades - VitalSalud Clínica Oftalmológica</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="./css/global.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: { sans: ['Inter', 'sans-serif'], heading: ['Outfit', 'sans-serif'] },
+                    colors: {
+                        primary: { 50: 'var(--color-primary-50)', 100: 'var(--color-primary-100)', 500: 'var(--color-primary-500)', 600: 'var(--color-primary-600)', 700: 'var(--color-primary-700)' },
+                        secondary: 'var(--color-secondary)',
+                    }
+                }
+            }
+        }
+    </script>
+
+    <script src="./js/ui-utils.js"></script>
+</head>
+
+<body class="font-sans text-gray-800 bg-gray-50 antialiased selection:bg-primary-500 selection:text-white">
+
+    <nav class="fixed w-full z-50 glass transition-all duration-300 shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <a href="./index.html" class="flex-shrink-0 flex items-center gap-2 cursor-pointer">
+                    <div
+                        class="w-10 h-10 bg-primary-500 text-white rounded-xl flex items-center justify-center font-bold text-2xl shadow-lg shadow-primary-500/30">
+                        V</div>
+                    <span class="font-heading font-bold text-2xl tracking-tight text-secondary">Vital<span
+                            class="text-primary-500">Salud</span></span>
+                </a>
+                <div class="hidden md:flex space-x-8 items-center">
+                    <a href="./index.html"
+                        class="text-gray-600 font-medium hover:text-primary-500 transition-colors">Inicio</a>
+                    <a href="./especialistas.html"
+                        class="text-gray-600 font-medium hover:text-primary-500 transition-colors">Especialistas</a>
+                    <a href="./servicios.html"
+                        class="text-primary-600 font-medium hover:text-primary-500 transition-colors">Servicios</a>
+                    <a href="./instalaciones.html"
+                        class="text-gray-600 font-medium hover:text-primary-500 transition-colors">Instalaciones</a>
+                    <a href="./login.html" class="text-gray-600 font-medium hover:text-primary-500 transition-colors">Iniciar Sesión</a>
+                    <a href="./contacto.html"
+                        class="bg-primary-500 hover:bg-primary-600 text-white px-6 py-2.5 rounded-full font-medium transition-all shadow-lg shadow-primary-500/30 transform hover:-translate-y-0.5">Agendar
+                        Cita</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="relative pt-32 pb-16 lg:pt-40 lg:pb-24 bg-secondary overflow-hidden">
+        <div class="absolute inset-0 opacity-10">
+            <img src="./img/hero-fondo.jpg" alt="Hospital background" class="w-full h-full object-cover">
+        </div>
+        <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h1 class="text-4xl md:text-5xl font-extrabold text-white font-heading mb-4">Servicios Oftalmológicos</h1>
+            <p class="text-xl text-gray-300 max-w-2xl mx-auto">Conoce todas las especialidades visuales que ponemos a tu
+                disposición para el cuidado de tus ojos.</p>
+        </div>
+    </div>
+
+    <section class="py-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Specialty 1 -->
+                <div
+                    class="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group">
+                    <div class="h-48 overflow-hidden relative">
+                        <img src="./img/cirugia-laser.jpg" alt="Cirugía Láser"
+                            class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-500">
+                        <div
+                            class="absolute inset-0 bg-primary-500 opacity-0 group-hover:opacity-20 transition-opacity">
+                        </div>
+                    </div>
+                    <div class="p-8">
+                        <h3 class="text-2xl font-bold font-heading text-secondary mb-3">Cirugía Láser Refractiva</h3>
+                        <p class="text-gray-600 mb-6 line-clamp-3">Despídete de los lentes. Corregimos miopía,
+                            astigmatismo e hipermetropía con tecnología láser de alta precisión y rápida recuperación.
+                        </p>
+                        <a href="./contacto.html"
+                            class="inline-flex items-center text-primary-600 font-semibold hover:text-primary-700">Agendar
+                            consulta</a>
+                    </div>
+                </div>
+
+                <!-- Specialty 2 -->
+                <div
+                    class="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group">
+                    <div class="h-48 overflow-hidden relative">
+                        <img src="./img/optometria.jpg" alt="Cataratas"
+                            class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-500">
+                        <div
+                            class="absolute inset-0 bg-primary-500 opacity-0 group-hover:opacity-20 transition-opacity">
+                        </div>
+                    </div>
+                    <div class="p-8">
+                        <h3 class="text-2xl font-bold font-heading text-secondary mb-3">Cirugía de Cataratas</h3>
+                        <p class="text-gray-600 mb-6 line-clamp-3">Recupera la claridad de tu visión. Utilizamos lentes
+                            intraoculares premium para un resultado óptimo y seguro.</p>
+                        <a href="./contacto.html"
+                            class="inline-flex items-center text-primary-600 font-semibold hover:text-primary-700">Agendar
+                            consulta</a>
+                    </div>
+                </div>
+
+                <!-- Specialty 3 -->
+                <div
+                    class="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group">
+                    <div class="h-48 overflow-hidden relative">
+                        <img src="./img/glaucoma.jpg" alt="Glaucoma"
+                            class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-500">
+                        <div
+                            class="absolute inset-0 bg-primary-500 opacity-0 group-hover:opacity-20 transition-opacity">
+                        </div>
+                    </div>
+                    <div class="p-8">
+                        <h3 class="text-2xl font-bold font-heading text-secondary mb-3">Detección de Glaucoma</h3>
+                        <p class="text-gray-600 mb-6 line-clamp-3">Protege tu nervio óptico. Diagnóstico temprano y
+                            tratamiento avanzado para prevenir la pérdida de visión silenciosa.</p>
+                        <a href="./contacto.html"
+                            class="inline-flex items-center text-primary-600 font-semibold hover:text-primary-700">Agendar
+                            consulta</a>
+                    </div>
+                </div>
+
+                <!-- Specialty 4 -->
+                <div
+                    class="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group">
+                    <div class="h-48 overflow-hidden relative">
+                        <img src="./img/retina.jpg" alt="Retina"
+                            class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-500">
+                        <div
+                            class="absolute inset-0 bg-primary-500 opacity-0 group-hover:opacity-20 transition-opacity">
+                        </div>
+                    </div>
+                    <div class="p-8">
+                        <h3 class="text-2xl font-bold font-heading text-secondary mb-3">Retina y Vítreo</h3>
+                        <p class="text-gray-600 mb-6 line-clamp-3">Atención especializada para retinopatía diabética,
+                            desprendimiento de retina y degeneración macular.</p>
+                        <a href="./contacto.html"
+                            class="inline-flex items-center text-primary-600 font-semibold hover:text-primary-700">Agendar
+                            consulta</a>
+                    </div>
+                </div>
+
+                <!-- Specialty 5 -->
+                <div
+                    class="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group">
+                    <div class="h-48 overflow-hidden relative">
+                        <img src="./img/pediatria.jpg" alt="Oftalmología Pediátrica"
+                            class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-500">
+                        <div
+                            class="absolute inset-0 bg-primary-500 opacity-0 group-hover:opacity-20 transition-opacity">
+                        </div>
+                    </div>
+                    <div class="p-8">
+                        <h3 class="text-2xl font-bold font-heading text-secondary mb-3">Oftalmología Pediátrica</h3>
+                        <p class="text-gray-600 mb-6 line-clamp-3">Evaluación visual infantil, tratamiento de estrabismo
+                            y ambliopía (ojo vago) para el correcto desarrollo visual.</p>
+                        <a href="./contacto.html"
+                            class="inline-flex items-center text-primary-600 font-semibold hover:text-primary-700">Agendar
+                            consulta</a>
+                    </div>
+                </div>
+
+                <!-- Specialty 6 -->
+                <div
+                    class="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group">
+                    <div class="h-48 overflow-hidden relative">
+                        <img src="./img/diagnostico-visual.jpg" alt="Ojo Seco"
+                            class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-500">
+                        <div
+                            class="absolute inset-0 bg-primary-500 opacity-0 group-hover:opacity-20 transition-opacity">
+                        </div>
+                    </div>
+                    <div class="p-8">
+                        <h3 class="text-2xl font-bold font-heading text-secondary mb-3">Clínica de Ojo Seco</h3>
+                        <p class="text-gray-600 mb-6 line-clamp-3">Análisis avanzado de la lágrima y tratamientos
+                            innovadores como luz pulsada (IPL) para aliviar la irritación constante.</p>
+                        <a href="./contacto.html"
+                            class="inline-flex items-center text-primary-600 font-semibold hover:text-primary-700">Agendar
+                            consulta</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-secondary text-white pt-20 pb-10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-16">
+                <div class="col-span-1 md:col-span-1">
+                    <div class="flex items-center gap-2 mb-6">
+                        <div
+                            class="w-8 h-8 bg-primary-500 text-white rounded-lg flex items-center justify-center font-bold text-xl">
+                            V</div>
+                        <span class="font-heading font-bold text-xl tracking-tight">Vital<span
+                                class="text-primary-500">Salud</span></span>
+                    </div>
+                    <p class="text-gray-400 mb-6 text-sm">Tu bienestar visual es nuestra vocación. Cuidamos de tus ojos
+                        con precisión y profesionalismo.</p>
+                </div>
+
+                <div>
+                    <h4 class="font-bold mb-6 font-heading text-lg">Especialidades</h4>
+                    <ul class="space-y-3 text-gray-400 text-sm">
+                        <li><a href="#" class="hover:text-primary-400 transition-colors">Cirugía Láser</a></li>
+                        <li><a href="#" class="hover:text-primary-400 transition-colors">Cataratas</a></li>
+                        <li><a href="#" class="hover:text-primary-400 transition-colors">Glaucoma</a></li>
+                        <li><a href="#" class="hover:text-primary-400 transition-colors">Retina y Vítreo</a></li>
+                        <li><a href="#" class="hover:text-primary-400 transition-colors">Oftalmología Pediátrica</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="font-bold mb-6 font-heading text-lg">Clínica</h4>
+                    <ul class="space-y-3 text-gray-400 text-sm">
+                        <li><a href="./especialistas.html" class="hover:text-primary-400 transition-colors">Sobre
+                                Nosotros</a></li>
+                        <li><a href="./instalaciones.html"
+                                class="hover:text-primary-400 transition-colors">Instalaciones</a></li>
+                        <li><a href="./blog.html" class="hover:text-primary-400 transition-colors">Blog de Salud
+                                Visual</a></li>
+                        <li><a href="./contacto.html" class="hover:text-primary-400 transition-colors">Contacto</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="font-bold mb-6 font-heading text-lg">Contacto</h4>
+                    <ul class="space-y-4 text-gray-400 text-sm">
+                        <li class="flex items-start gap-3">
+                            <span class="mt-1">📍</span>
+                            <span>Av. de la Visión 123,<br>Centro Oftalmológico, CP 1000</span>
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <span>📞</span>
+                            <span>+51 999 999 999</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div
+                class="border-t border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-gray-500">
+                <p>&copy; 2026 VitalSalud Clínica Oftalmológica. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+    <script src="./js/auth-state.js"></script>
+</body>
+
+</html>

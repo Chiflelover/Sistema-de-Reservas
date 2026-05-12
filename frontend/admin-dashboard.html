@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panel de Administración - VitalSalud</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./css/global.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: { sans: ['Inter', 'sans-serif'], heading: ['Outfit', 'sans-serif'] },
+                    colors: {
+                        primary: { 50: 'var(--color-primary-50)', 100: 'var(--color-primary-100)', 500: 'var(--color-primary-500)', 600: 'var(--color-primary-600)', 700: 'var(--color-primary-700)' },
+                        secondary: 'var(--color-secondary)',
+                    }
+                }
+            }
+        }
+    </script>
+    <script src="./js/ui-utils.js"></script>
+</head>
+<body class="font-sans text-gray-800 bg-gray-50 flex h-screen selection:bg-primary-500 selection:text-white">
+
+    <!-- Sidebar -->
+    <aside class="w-64 bg-secondary text-white flex flex-col h-full shadow-2xl relative z-20">
+        <div class="h-20 flex items-center px-6 border-b border-gray-800">
+            <a href="./index.html" class="flex items-center gap-2 cursor-pointer">
+                <div class="w-8 h-8 bg-primary-500 text-white rounded-lg flex items-center justify-center font-bold text-xl shadow-lg shadow-primary-500/30">V</div>
+                <span class="font-heading font-bold text-xl tracking-tight text-white">Vital<span class="text-primary-500">Admin</span></span>
+            </a>
+        </div>
+        <nav class="flex-grow py-6 px-4 space-y-2">
+            <a href="./admin-dashboard.html" class="flex items-center gap-3 px-4 py-3 bg-primary-500 text-white rounded-xl font-medium transition-colors">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path></svg>
+                Gestión de Médicos
+            </a>
+            <!-- Otras opciones futuras -->
+        </nav>
+        <div class="p-4 border-t border-gray-800">
+            <a href="./index.html" class="flex items-center gap-3 px-4 py-3 text-gray-400 hover:text-white transition-colors text-sm font-medium">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path></svg>
+                Volver a la web
+            </a>
+        </div>
+    </aside>
+
+    <!-- Contenido Principal -->
+    <main class="flex-grow overflow-y-auto bg-gray-50 h-full p-8">
+        <div class="max-w-6xl mx-auto">
+            <header class="mb-8 flex justify-between items-end">
+                <div>
+                    <h1 class="text-3xl font-heading font-bold text-secondary mb-2">Gestión de Médicos</h1>
+                    <p class="text-gray-500">Agrega y administra la información de los especialistas.</p>
+                </div>
+            </header>
+
+
+
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                
+                <!-- Formulario Agregar Médico -->
+                <div class="lg:col-span-1">
+                    <div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-100 sticky top-8">
+                        <h2 class="text-xl font-heading font-bold text-secondary mb-6 pb-4 border-b border-gray-50">Registrar Médico</h2>
+                        
+                        <form id="form-medico" class="space-y-5" enctype="multipart/form-data">
+                            <!-- Foto (Drag & Drop) -->
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">Fotografía (Opcional)</label>
+                                <div class="mt-1 flex justify-center px-6 pt-5 pb-6 border-2 border-gray-300 border-dashed rounded-xl hover:border-primary-400 transition-colors bg-gray-50 relative group cursor-pointer" id="drop-zone">
+                                    <div class="space-y-1 text-center">
+                                        <svg class="mx-auto h-12 w-12 text-gray-400 group-hover:text-primary-500 transition-colors" stroke="currentColor" fill="none" viewBox="0 0 48 48">
+                                            <path d="M28 8H12a4 4 0 00-4 4v20m32-12v8m0 0v8a4 4 0 01-4 4H12a4 4 0 01-4-4v-4m32-4l-3.172-3.172a4 4 0 00-5.656 0L28 28M8 32l9.172-9.172a4 4 0 015.656 0L28 28m0 0l4 4m4-24h8m-4-4v8m-12 4h.02" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                                        </svg>
+                                        <div class="flex text-sm text-gray-600 justify-center">
+                                            <label for="imagen" class="relative cursor-pointer bg-white rounded-md font-medium text-primary-600 hover:text-primary-500 focus-within:outline-none">
+                                                <span>Subir archivo</span>
+                                                <input id="imagen" name="imagen" type="file" class="sr-only" accept="image/*">
+                                            </label>
+                                        </div>
+                                        <p class="text-xs text-gray-500" id="file-name">PNG, JPG hasta 5MB (Opcional)</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="grid grid-cols-2 gap-4">
+                                <div>
+                                    <label class="block text-sm font-medium text-gray-700 mb-1">Nombres</label>
+                                    <input type="text" name="nombres" required class="w-full px-4 py-2.5 rounded-xl border border-gray-200 focus:ring-2 focus:ring-primary-500 outline-none">
+                                </div>
+                                <div>
+                                    <label class="block text-sm font-medium text-gray-700 mb-1">Apellidos</label>
+                                    <input type="text" name="apellidos" required class="w-full px-4 py-2.5 rounded-xl border border-gray-200 focus:ring-2 focus:ring-primary-500 outline-none">
+                                </div>
+                            </div>
+
+                            <div class="grid grid-cols-2 gap-4">
+                                <div>
+                                    <label class="block text-sm font-medium text-gray-700 mb-1">DNI</label>
+                                    <input type="text" name="dni" required pattern="\d{8}" maxlength="8" title="El DNI debe tener 8 dígitos" class="w-full px-4 py-2.5 rounded-xl border border-gray-200 focus:ring-2 focus:ring-primary-500 outline-none">
+                                </div>
+                                <div>
+                                    <label class="block text-sm font-medium text-gray-700 mb-1">CMP</label>
+                                    <input type="text" name="num_colegiatura" required class="w-full px-4 py-2.5 rounded-xl border border-gray-200 focus:ring-2 focus:ring-primary-500 outline-none">
+                                </div>
+                            </div>
+
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-1">Especialidad</label>
+                                <select name="especialidad" required class="w-full px-4 py-2.5 rounded-xl border border-gray-200 focus:ring-2 focus:ring-primary-500 outline-none bg-white">
+                                    <option value="" disabled selected>Selecciona una opción</option>
+                                    <option value="Oftalmología General">Oftalmología General</option>
+                                    <option value="Cirugía Láser (LASIK)">Cirugía Láser (LASIK)</option>
+                                    <option value="Retina y Vítreo">Retina y Vítreo</option>
+                                    <option value="Glaucoma">Glaucoma</option>
+                                    <option value="Oftalmología Pediátrica">Oftalmología Pediátrica</option>
+                                    <option value="Cataratas">Cataratas</option>
+                                    <option value="Pediatría">Pediatría General</option>
+                                    <option value="Medicina General">Medicina General</option>
+                                    <option value="Cardiología">Cardiología</option>
+                                </select>
+                            </div>
+
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-1">Teléfono</label>
+                                <input type="tel" name="telefono" required pattern="\d+" title="Solo números" class="w-full px-4 py-2.5 rounded-xl border border-gray-200 focus:ring-2 focus:ring-primary-500 outline-none">
+                            </div>
+                            
+                            <button type="submit" class="w-full bg-primary-500 hover:bg-primary-600 text-white font-semibold py-3 rounded-xl transition-all shadow-md transform hover:-translate-y-0.5 mt-2 flex justify-center items-center gap-2">
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path></svg>
+                                Guardar Médico
+                            </button>
+                        </form>
+                    </div>
+                </div>
+
+                <!-- Lista de Médicos -->
+                <div class="lg:col-span-2">
+                    <div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-100">
+                        <h2 class="text-xl font-heading font-bold text-secondary mb-6 pb-4 border-b border-gray-50">Directorio Médico</h2>
+                        
+                        <div id="medicos-container" class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <!-- Los médicos se cargarán aquí dinámicamente -->
+                            <div class="col-span-full text-center py-10 text-gray-400" id="loading-medicos">
+                                Cargando médicos...
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </main>
+
+    <script>
+        // Lógica para mostrar nombre de archivo
+        const inputFile = document.getElementById('imagen');
+        const fileNameDisplay = document.getElementById('file-name');
+        
+        inputFile.addEventListener('change', function() {
+            if(this.files && this.files.length > 0) {
+                fileNameDisplay.textContent = "Archivo seleccionado: " + this.files[0].name;
+                fileNameDisplay.classList.add('text-primary-600', 'font-medium');
+            }
+        });
+
+        // Cargar médicos
+        async function loadMedicos() {
+            const container = document.getElementById('medicos-container');
+            const loader = document.getElementById('loading-medicos');
+            
+            try {
+                const res = await fetch('/api/medicos');
+                if (!res.ok) throw new Error('Fallo al conectar con la API');
+                
+                const medicos = await res.json().catch(() => {
+                    throw new Error('Respuesta del servidor no es JSON válido');
+                });
+                
+                container.innerHTML = '';
+                
+                if (medicos.length === 0) {
+                    container.innerHTML = '<div class="col-span-full text-center py-10 text-gray-400">No hay médicos registrados todavía.</div>';
+                    return;
+                }
+
+                medicos.forEach(med => {
+                    const imagenSrc = med.imagen_url || './img/doctor-placeholder.jpg';
+                    const card = document.createElement('div');
+                    card.className = 'border border-gray-100 rounded-2xl p-4 flex gap-4 items-center hover:shadow-md transition-shadow bg-gray-50/50 group relative';
+                    card.innerHTML = `
+                        <img src="${imagenSrc}" alt="${med.nombres}" class="w-20 h-20 rounded-xl object-cover shadow-sm group-hover:scale-105 transition-transform">
+                        <div class="flex-grow">
+                            <h3 class="font-bold text-secondary text-lg leading-tight font-heading">${med.nombres} ${med.apellidos}</h3>
+                            <p class="text-primary-600 text-sm font-medium mb-1">${med.especialidad}</p>
+                            <div class="text-xs text-gray-500 flex flex-wrap gap-x-3 gap-y-1 mt-2">
+                                <span class="flex items-center gap-1">DNI: ${med.dni}</span>
+                                <span class="flex items-center gap-1">CMP: ${med.num_colegiatura}</span>
+                                <span class="flex items-center gap-1">Tel: ${med.telefono}</span>
+                            </div>
+                        </div>
+                        <button onclick="deleteMedico(${med.id_medico})" class="absolute top-4 right-4 p-2 text-gray-400 hover:text-red-500 hover:bg-red-50 rounded-lg transition-all opacity-0 group-hover:opacity-100" title="Eliminar Médico">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"></path></svg>
+                        </button>
+                    `;
+                    container.appendChild(card);
+                });
+            } catch (error) {
+                console.error('Error loading medicos:', error);
+                loader.innerHTML = `<p class="text-red-500">${error.message}</p>`;
+            }
+        }
+
+        // Eliminar Médico
+        async function deleteMedico(id) {
+            const confirmed = await UI.showConfirm('¿Eliminar Médico?', '¿Estás seguro de que deseas eliminar a este especialista? Esta acción no se puede deshacer.');
+            if (!confirmed) return;
+
+            try {
+                const res = await fetch(`/api/medicos/${id}`, { method: 'DELETE' });
+                const data = await res.json();
+
+                if (res.ok) {
+                    UI.showToast('Médico eliminado correctamente', 'success');
+                    loadMedicos(); // Recargar lista
+                } else {
+                    UI.showToast(data.error || 'Error al eliminar', 'error');
+                }
+            } catch (error) {
+                UI.showToast('Error de conexión', 'error');
+            }
+        }
+
+        // Subir Médico
+        document.getElementById('form-medico').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const form = e.target;
+            const formData = new FormData(form);
+            const alertDiv = document.getElementById('alert-message');
+
+            try {
+                const response = await fetch('/api/medicos', {
+                    method: 'POST',
+                    body: formData // No se pone Content-Type manual con FormData, el navegador lo calcula para incluir el boundary
+                });
+
+                const data = await response.json().catch(() => ({ error: 'El servidor no respondió con JSON válido' }));
+
+                if (!response.ok) {
+                    UI.showToast(data.error || 'Error al registrar médico', 'error');
+                } else {
+                    UI.showToast('¡Médico agregado exitosamente!', 'success');
+                    
+                    form.reset();
+                    fileNameDisplay.textContent = "PNG, JPG hasta 5MB";
+                    fileNameDisplay.classList.remove('text-primary-600', 'font-medium');
+                    
+                    loadMedicos(); // Recargar la lista
+                }
+            } catch (error) {
+                UI.showToast('Error de conexión con el servidor.', 'error');
+            }
+        });
+
+        // Inicializar
+        loadMedicos();
+    </script>
+</body>
+</html>
