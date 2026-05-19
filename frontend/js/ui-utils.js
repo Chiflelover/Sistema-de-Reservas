@@ -1,13 +1,13 @@
-/**
+﻿/**
  * UI Utilities for VitalSalud
  * Provee un sistema de notificaciones (Toasts) y confirmaciones elegantes.
  */
 
 const UI = {
     /**
-     * Muestra una notificación temporal tipo Toast
+     * Muestra una notificaciÃ³n temporal tipo Toast
      * @param {string} message - El mensaje a mostrar
-     * @param {'success' | 'error' | 'info'} type - El tipo de notificación
+     * @param {'success' | 'error' | 'info'} type - El tipo de notificaciÃ³n
      */
     showToast(message, type = 'info') {
         let container = document.getElementById('toast-container');
@@ -20,18 +20,18 @@ const UI = {
         const toast = document.createElement('div');
         toast.className = `toast bg-white rounded-2xl shadow-2xl border-l-4 p-5 flex items-start gap-4 transition-all`;
         
-        let icon = '🔔';
+        let icon = 'ðŸ””';
         let borderColor = 'border-blue-500';
         let iconBg = 'bg-blue-50';
         let iconColor = 'text-blue-500';
 
         if (type === 'success') {
-            icon = '✅';
+            icon = 'âœ…';
             borderColor = 'border-primary-500';
             iconBg = 'bg-primary-50';
             iconColor = 'text-primary-500';
         } else if (type === 'error') {
-            icon = '❌';
+            icon = 'âŒ';
             borderColor = 'border-red-500';
             iconBg = 'bg-red-50';
             iconColor = 'text-red-500';
@@ -44,14 +44,14 @@ const UI = {
                 ${icon}
             </div>
             <div class="flex-grow pt-1">
-                <p class="text-sm font-bold text-secondary uppercase tracking-tight mb-0.5">${type === 'success' ? 'Éxito' : type === 'error' ? 'Atención' : 'Notificación'}</p>
+                <p class="text-sm font-bold text-secondary uppercase tracking-tight mb-0.5">${type === 'success' ? 'Ã‰xito' : type === 'error' ? 'AtenciÃ³n' : 'NotificaciÃ³n'}</p>
                 <p class="text-gray-500 text-sm leading-relaxed">${message}</p>
             </div>
         `;
 
         container.appendChild(toast);
 
-        // Auto eliminar después de 4 segundos
+        // Auto eliminar despuÃ©s de 4 segundos
         setTimeout(() => {
             toast.classList.add('toast-fade-out');
             setTimeout(() => {
@@ -61,8 +61,8 @@ const UI = {
     },
 
     /**
-     * Muestra un modal de confirmación elegante
-     * @param {string} title - Título del modal
+     * Muestra un modal de confirmaciÃ³n elegante
+     * @param {string} title - TÃ­tulo del modal
      * @param {string} message - Mensaje descriptivo
      * @returns {Promise<boolean>} - Resuelve a true si el usuario confirma
      */
@@ -74,7 +74,7 @@ const UI = {
             overlay.innerHTML = `
                 <div class="modal-content bg-white rounded-[2rem] shadow-2xl max-w-md w-full p-8 md:p-10 border border-gray-100 text-center">
                     <div class="w-20 h-20 bg-yellow-50 text-yellow-500 rounded-3xl flex items-center justify-center mx-auto mb-6 shadow-sm transform -rotate-3">
-                        <span class="text-4xl">⚠️</span>
+                        <span class="text-4xl">âš ï¸</span>
                     </div>
                     <h3 class="text-2xl font-bold text-secondary font-heading mb-3">${title}</h3>
                     <p class="text-gray-500 mb-8 leading-relaxed">${message}</p>
@@ -83,7 +83,7 @@ const UI = {
                             Cancelar
                         </button>
                         <button id="confirm-ok" class="flex-1 px-6 py-4 rounded-2xl bg-primary-500 hover:bg-primary-600 text-white font-bold shadow-lg shadow-primary-500/30 transition-all transform hover:-translate-y-0.5">
-                            Sí, continuar
+                            SÃ­, continuar
                         </button>
                     </div>
                 </div>
@@ -111,5 +111,5 @@ const UI = {
     }
 };
 
-// Hacerlo global para que sea fácil de llamar
+// Hacerlo global para que sea fÃ¡cil de llamar
 window.UI = UI;

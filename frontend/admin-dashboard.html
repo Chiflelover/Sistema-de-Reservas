@@ -1,9 +1,9 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Panel de Administración - VitalSalud</title>
+    <title>Panel de AdministraciÃ³n - VitalSalud</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="./css/global.css">
     <script src="https://cdn.tailwindcss.com"></script>
@@ -35,7 +35,7 @@
         <nav class="flex-grow py-6 px-4 space-y-2">
             <a href="./admin-dashboard.html" class="flex items-center gap-3 px-4 py-3 bg-primary-500 text-white rounded-xl font-medium transition-colors">
                 <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path></svg>
-                Gestión de Médicos
+                GestiÃ³n de MÃ©dicos
             </a>
             <!-- Otras opciones futuras -->
         </nav>
@@ -52,8 +52,8 @@
         <div class="max-w-6xl mx-auto">
             <header class="mb-8 flex justify-between items-end">
                 <div>
-                    <h1 class="text-3xl font-heading font-bold text-secondary mb-2">Gestión de Médicos</h1>
-                    <p class="text-gray-500">Agrega y administra la información de los especialistas.</p>
+                    <h1 class="text-3xl font-heading font-bold text-secondary mb-2">GestiÃ³n de MÃ©dicos</h1>
+                    <p class="text-gray-500">Agrega y administra la informaciÃ³n de los especialistas.</p>
                 </div>
             </header>
 
@@ -61,15 +61,15 @@
 
             <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
                 
-                <!-- Formulario Agregar Médico -->
+                <!-- Formulario Agregar MÃ©dico -->
                 <div class="lg:col-span-1">
                     <div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-100 sticky top-8">
-                        <h2 class="text-xl font-heading font-bold text-secondary mb-6 pb-4 border-b border-gray-50">Registrar Médico</h2>
+                        <h2 class="text-xl font-heading font-bold text-secondary mb-6 pb-4 border-b border-gray-50">Registrar MÃ©dico</h2>
                         
                         <form id="form-medico" class="space-y-5" enctype="multipart/form-data">
                             <!-- Foto (Drag & Drop) -->
                             <div>
-                                <label class="block text-sm font-medium text-gray-700 mb-2">Fotografía (Opcional)</label>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">FotografÃ­a (Opcional)</label>
                                 <div class="mt-1 flex justify-center px-6 pt-5 pb-6 border-2 border-gray-300 border-dashed rounded-xl hover:border-primary-400 transition-colors bg-gray-50 relative group cursor-pointer" id="drop-zone">
                                     <div class="space-y-1 text-center">
                                         <svg class="mx-auto h-12 w-12 text-gray-400 group-hover:text-primary-500 transition-colors" stroke="currentColor" fill="none" viewBox="0 0 48 48">
@@ -100,7 +100,7 @@
                             <div class="grid grid-cols-2 gap-4">
                                 <div>
                                     <label class="block text-sm font-medium text-gray-700 mb-1">DNI</label>
-                                    <input type="text" name="dni" required pattern="\d{8}" maxlength="8" title="El DNI debe tener 8 dígitos" class="w-full px-4 py-2.5 rounded-xl border border-gray-200 focus:ring-2 focus:ring-primary-500 outline-none">
+                                    <input type="text" name="dni" required pattern="\d{8}" maxlength="8" title="El DNI debe tener 8 dÃ­gitos" class="w-full px-4 py-2.5 rounded-xl border border-gray-200 focus:ring-2 focus:ring-primary-500 outline-none">
                                 </div>
                                 <div>
                                     <label class="block text-sm font-medium text-gray-700 mb-1">CMP</label>
@@ -111,41 +111,41 @@
                             <div>
                                 <label class="block text-sm font-medium text-gray-700 mb-1">Especialidad</label>
                                 <select name="especialidad" required class="w-full px-4 py-2.5 rounded-xl border border-gray-200 focus:ring-2 focus:ring-primary-500 outline-none bg-white">
-                                    <option value="" disabled selected>Selecciona una opción</option>
-                                    <option value="Oftalmología General">Oftalmología General</option>
-                                    <option value="Cirugía Láser (LASIK)">Cirugía Láser (LASIK)</option>
-                                    <option value="Retina y Vítreo">Retina y Vítreo</option>
+                                    <option value="" disabled selected>Selecciona una opciÃ³n</option>
+                                    <option value="OftalmologÃ­a General">OftalmologÃ­a General</option>
+                                    <option value="CirugÃ­a LÃ¡ser (LASIK)">CirugÃ­a LÃ¡ser (LASIK)</option>
+                                    <option value="Retina y VÃ­treo">Retina y VÃ­treo</option>
                                     <option value="Glaucoma">Glaucoma</option>
-                                    <option value="Oftalmología Pediátrica">Oftalmología Pediátrica</option>
+                                    <option value="OftalmologÃ­a PediÃ¡trica">OftalmologÃ­a PediÃ¡trica</option>
                                     <option value="Cataratas">Cataratas</option>
-                                    <option value="Pediatría">Pediatría General</option>
+                                    <option value="PediatrÃ­a">PediatrÃ­a General</option>
                                     <option value="Medicina General">Medicina General</option>
-                                    <option value="Cardiología">Cardiología</option>
+                                    <option value="CardiologÃ­a">CardiologÃ­a</option>
                                 </select>
                             </div>
 
                             <div>
-                                <label class="block text-sm font-medium text-gray-700 mb-1">Teléfono</label>
-                                <input type="tel" name="telefono" required pattern="\d+" title="Solo números" class="w-full px-4 py-2.5 rounded-xl border border-gray-200 focus:ring-2 focus:ring-primary-500 outline-none">
+                                <label class="block text-sm font-medium text-gray-700 mb-1">TelÃ©fono</label>
+                                <input type="tel" name="telefono" required pattern="\d+" title="Solo nÃºmeros" class="w-full px-4 py-2.5 rounded-xl border border-gray-200 focus:ring-2 focus:ring-primary-500 outline-none">
                             </div>
                             
                             <button type="submit" class="w-full bg-primary-500 hover:bg-primary-600 text-white font-semibold py-3 rounded-xl transition-all shadow-md transform hover:-translate-y-0.5 mt-2 flex justify-center items-center gap-2">
                                 <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path></svg>
-                                Guardar Médico
+                                Guardar MÃ©dico
                             </button>
                         </form>
                     </div>
                 </div>
 
-                <!-- Lista de Médicos -->
+                <!-- Lista de MÃ©dicos -->
                 <div class="lg:col-span-2">
                     <div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-100">
-                        <h2 class="text-xl font-heading font-bold text-secondary mb-6 pb-4 border-b border-gray-50">Directorio Médico</h2>
+                        <h2 class="text-xl font-heading font-bold text-secondary mb-6 pb-4 border-b border-gray-50">Directorio MÃ©dico</h2>
                         
                         <div id="medicos-container" class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                            <!-- Los médicos se cargarán aquí dinámicamente -->
+                            <!-- Los mÃ©dicos se cargarÃ¡n aquÃ­ dinÃ¡micamente -->
                             <div class="col-span-full text-center py-10 text-gray-400" id="loading-medicos">
-                                Cargando médicos...
+                                Cargando mÃ©dicos...
                             </div>
                         </div>
                     </div>
@@ -156,7 +156,7 @@
     </main>
 
     <script>
-        // Lógica para mostrar nombre de archivo
+        // LÃ³gica para mostrar nombre de archivo
         const inputFile = document.getElementById('imagen');
         const fileNameDisplay = document.getElementById('file-name');
         
@@ -167,7 +167,7 @@
             }
         });
 
-        // Cargar médicos
+        // Cargar mÃ©dicos
         async function loadMedicos() {
             const container = document.getElementById('medicos-container');
             const loader = document.getElementById('loading-medicos');
@@ -177,13 +177,13 @@
                 if (!res.ok) throw new Error('Fallo al conectar con la API');
                 
                 const medicos = await res.json().catch(() => {
-                    throw new Error('Respuesta del servidor no es JSON válido');
+                    throw new Error('Respuesta del servidor no es JSON vÃ¡lido');
                 });
                 
                 container.innerHTML = '';
                 
                 if (medicos.length === 0) {
-                    container.innerHTML = '<div class="col-span-full text-center py-10 text-gray-400">No hay médicos registrados todavía.</div>';
+                    container.innerHTML = '<div class="col-span-full text-center py-10 text-gray-400">No hay mÃ©dicos registrados todavÃ­a.</div>';
                     return;
                 }
 
@@ -202,7 +202,7 @@
                                 <span class="flex items-center gap-1">Tel: ${med.telefono}</span>
                             </div>
                         </div>
-                        <button onclick="deleteMedico(${med.id_medico})" class="absolute top-4 right-4 p-2 text-gray-400 hover:text-red-500 hover:bg-red-50 rounded-lg transition-all opacity-0 group-hover:opacity-100" title="Eliminar Médico">
+                        <button onclick="deleteMedico(${med.id_medico})" class="absolute top-4 right-4 p-2 text-gray-400 hover:text-red-500 hover:bg-red-50 rounded-lg transition-all opacity-0 group-hover:opacity-100" title="Eliminar MÃ©dico">
                             <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"></path></svg>
                         </button>
                     `;
@@ -214,9 +214,9 @@
             }
         }
 
-        // Eliminar Médico
+        // Eliminar MÃ©dico
         async function deleteMedico(id) {
-            const confirmed = await UI.showConfirm('¿Eliminar Médico?', '¿Estás seguro de que deseas eliminar a este especialista? Esta acción no se puede deshacer.');
+            const confirmed = await UI.showConfirm('Â¿Eliminar MÃ©dico?', 'Â¿EstÃ¡s seguro de que deseas eliminar a este especialista? Esta acciÃ³n no se puede deshacer.');
             if (!confirmed) return;
 
             try {
@@ -224,17 +224,17 @@
                 const data = await res.json();
 
                 if (res.ok) {
-                    UI.showToast('Médico eliminado correctamente', 'success');
+                    UI.showToast('MÃ©dico eliminado correctamente', 'success');
                     loadMedicos(); // Recargar lista
                 } else {
                     UI.showToast(data.error || 'Error al eliminar', 'error');
                 }
             } catch (error) {
-                UI.showToast('Error de conexión', 'error');
+                UI.showToast('Error de conexiÃ³n', 'error');
             }
         }
 
-        // Subir Médico
+        // Subir MÃ©dico
         document.getElementById('form-medico').addEventListener('submit', async (e) => {
             e.preventDefault();
             const form = e.target;
@@ -247,12 +247,12 @@
                     body: formData // No se pone Content-Type manual con FormData, el navegador lo calcula para incluir el boundary
                 });
 
-                const data = await response.json().catch(() => ({ error: 'El servidor no respondió con JSON válido' }));
+                const data = await response.json().catch(() => ({ error: 'El servidor no respondiÃ³ con JSON vÃ¡lido' }));
 
                 if (!response.ok) {
-                    UI.showToast(data.error || 'Error al registrar médico', 'error');
+                    UI.showToast(data.error || 'Error al registrar mÃ©dico', 'error');
                 } else {
-                    UI.showToast('¡Médico agregado exitosamente!', 'success');
+                    UI.showToast('Â¡MÃ©dico agregado exitosamente!', 'success');
                     
                     form.reset();
                     fileNameDisplay.textContent = "PNG, JPG hasta 5MB";
@@ -261,7 +261,7 @@
                     loadMedicos(); // Recargar la lista
                 }
             } catch (error) {
-                UI.showToast('Error de conexión con el servidor.', 'error');
+                UI.showToast('Error de conexiÃ³n con el servidor.', 'error');
             }
         });
 

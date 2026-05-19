@@ -1,10 +1,10 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="es">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Especialistas - VitalSalud Clínica Oftalmológica</title>
+    <title>Especialistas - VitalSalud ClÃ­nica OftalmolÃ³gica</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
@@ -50,8 +50,8 @@
                         class="text-gray-600 font-medium hover:text-primary-500 transition-colors">Servicios</a>
                     <a href="./instalaciones.html"
                         class="text-gray-600 font-medium hover:text-primary-500 transition-colors">Instalaciones</a>
-                    <a href="./login.html" class="text-gray-600 font-medium hover:text-primary-500 transition-colors">Iniciar Sesión</a>
-                    <a href="./contacto.html"
+                    <a href="./login.html" class="text-gray-600 font-medium hover:text-primary-500 transition-colors">Iniciar SesiÃ³n</a>
+                    <a href="./agendar.html"
                         class="bg-primary-500 hover:bg-primary-600 text-white px-6 py-2.5 rounded-full font-medium transition-all shadow-lg shadow-primary-500/30 transform hover:-translate-y-0.5">Agendar
                         Cita</a>
                 </div>
@@ -63,19 +63,19 @@
         <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
             <div
                 class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary-50 border border-primary-100 text-primary-600 font-medium text-sm mb-6">
-                Nuestro Equipo Oftalmológico
+                Nuestro Equipo OftalmolÃ³gico
             </div>
             <h1 class="text-4xl md:text-5xl font-extrabold text-secondary font-heading mb-4">Especialistas de Primer
                 Nivel</h1>
-            <p class="text-xl text-gray-600 max-w-2xl mx-auto">Conoce a los oftalmólogos certificados comprometidos con
-                brindarte la mejor atención visual.</p>
+            <p class="text-xl text-gray-600 max-w-2xl mx-auto">Conoce a los oftalmÃ³logos certificados comprometidos con
+                brindarte la mejor atenciÃ³n visual.</p>
         </div>
     </div>
 
     <section class="py-20 bg-gray-50">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div id="medicos-grid" class="grid md:grid-cols-2 lg:grid-cols-3 gap-10">
-                <!-- Se cargará dinámicamente -->
+                <!-- Se cargarÃ¡ dinÃ¡micamente -->
                 <div class="col-span-full text-center py-20 text-gray-500">
                     <p>Cargando nuestro equipo de especialistas...</p>
                 </div>
@@ -91,7 +91,7 @@
                 const medicos = await res.json();
                 
                 if (medicos.length === 0) {
-                    grid.innerHTML = '<div class="col-span-full text-center py-20 text-gray-500">Próximamente conocerás a nuestro equipo completo.</div>';
+                    grid.innerHTML = '<div class="col-span-full text-center py-20 text-gray-500">PrÃ³ximamente conocerÃ¡s a nuestro equipo completo.</div>';
                     return;
                 }
 
@@ -108,7 +108,7 @@
                             <p class="text-primary-600 font-medium mb-4">${med.especialidad}</p>
                             <p class="text-gray-600 text-sm mb-6 px-4">Especialista comprometido con la salud visual y el bienestar de sus pacientes.</p>
                             <div class="text-xs text-gray-400 mb-4">CMP: ${med.num_colegiatura}</div>
-                            <a href="./contacto.html" class="inline-block w-full py-3 px-4 bg-gray-50 hover:bg-primary-50 text-secondary hover:text-primary-600 rounded-xl font-medium transition-colors border border-gray-100">Solicitar Cita</a>
+                            <a href="./agendar.html" class="inline-block w-full py-3 px-4 bg-gray-50 hover:bg-primary-50 text-secondary hover:text-primary-600 rounded-xl font-medium transition-colors border border-gray-100">Solicitar Cita</a>
                         </div>
                     `;
                 });
@@ -131,24 +131,24 @@
                         <span class="font-heading font-bold text-xl tracking-tight">Vital<span
                                 class="text-primary-500">Salud</span></span>
                     </div>
-                    <p class="text-gray-400 mb-6 text-sm">Tu bienestar visual es nuestra vocación. Cuidamos de tus ojos
-                        con precisión y profesionalismo.</p>
+                    <p class="text-gray-400 mb-6 text-sm">Tu bienestar visual es nuestra vocaciÃ³n. Cuidamos de tus ojos
+                        con precisiÃ³n y profesionalismo.</p>
                 </div>
 
                 <div>
                     <h4 class="font-bold mb-6 font-heading text-lg">Especialidades</h4>
                     <ul class="space-y-3 text-gray-400 text-sm">
-                        <li><a href="#" class="hover:text-primary-400 transition-colors">Cirugía Láser</a></li>
+                        <li><a href="#" class="hover:text-primary-400 transition-colors">CirugÃ­a LÃ¡ser</a></li>
                         <li><a href="#" class="hover:text-primary-400 transition-colors">Cataratas</a></li>
                         <li><a href="#" class="hover:text-primary-400 transition-colors">Glaucoma</a></li>
-                        <li><a href="#" class="hover:text-primary-400 transition-colors">Retina y Vítreo</a></li>
-                        <li><a href="#" class="hover:text-primary-400 transition-colors">Oftalmología Pediátrica</a>
+                        <li><a href="#" class="hover:text-primary-400 transition-colors">Retina y VÃ­treo</a></li>
+                        <li><a href="#" class="hover:text-primary-400 transition-colors">OftalmologÃ­a PediÃ¡trica</a>
                         </li>
                     </ul>
                 </div>
 
                 <div>
-                    <h4 class="font-bold mb-6 font-heading text-lg">Clínica</h4>
+                    <h4 class="font-bold mb-6 font-heading text-lg">ClÃ­nica</h4>
                     <ul class="space-y-3 text-gray-400 text-sm">
                         <li><a href="./especialistas.html" class="hover:text-primary-400 transition-colors">Sobre
                                 Nosotros</a></li>
@@ -156,7 +156,7 @@
                                 class="hover:text-primary-400 transition-colors">Instalaciones</a></li>
                         <li><a href="./blog.html" class="hover:text-primary-400 transition-colors">Blog de Salud
                                 Visual</a></li>
-                        <li><a href="./contacto.html" class="hover:text-primary-400 transition-colors">Contacto</a></li>
+                        <li><a href="./agendar.html" class="hover:text-primary-400 transition-colors">Contacto</a></li>
                     </ul>
                 </div>
 
@@ -164,11 +164,11 @@
                     <h4 class="font-bold mb-6 font-heading text-lg">Contacto</h4>
                     <ul class="space-y-4 text-gray-400 text-sm">
                         <li class="flex items-start gap-3">
-                            <span class="mt-1">📍</span>
-                            <span>Av. de la Visión 123,<br>Centro Oftalmológico, CP 1000</span>
+                            <span class="mt-1">ðŸ“</span>
+                            <span>Av. de la VisiÃ³n 123,<br>Centro OftalmolÃ³gico, CP 1000</span>
                         </li>
                         <li class="flex items-center gap-3">
-                            <span>📞</span>
+                            <span>ðŸ“ž</span>
                             <span>+51 999 999 999</span>
                         </li>
                     </ul>
@@ -176,7 +176,7 @@
             </div>
             <div
                 class="border-t border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-gray-500">
-                <p>&copy; 2026 VitalSalud Clínica Oftalmológica. Todos los derechos reservados.</p>
+                <p>&copy; 2026 VitalSalud ClÃ­nica OftalmolÃ³gica. Todos los derechos reservados.</p>
             </div>
         </div>
     </footer>

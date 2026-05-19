@@ -1,10 +1,10 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="es">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contacto - VitalSalud Clínica Oftalmológica</title>
+    <title>Contacto - VitalSalud ClÃ­nica OftalmolÃ³gica</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
@@ -50,7 +50,7 @@
                         class="text-gray-600 font-medium hover:text-primary-500 transition-colors">Servicios</a>
                     <a href="./instalaciones.html"
                         class="text-gray-600 font-medium hover:text-primary-500 transition-colors">Instalaciones</a>
-                    <a href="./contacto.html"
+                    <a href="./agendar.html"
                         class="text-primary-600 font-medium hover:text-primary-500 transition-colors">Agendar Cita</a>
                 </div>
             </div>
@@ -61,9 +61,9 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center max-w-3xl mx-auto mb-16">
                 <h1 class="font-heading text-4xl md:text-5xl font-extrabold text-secondary mb-4">Agenda tu Consulta
-                    Oftalmológica</h1>
+                    OftalmolÃ³gica</h1>
                 <p class="text-gray-600 text-lg">Estamos listos para cuidar de tus ojos. Llena el formulario a
-                    continuación para programar tu revisión visual.</p>
+                    continuaciÃ³n para programar tu revisiÃ³n visual.</p>
             </div>
 
             <div class="grid lg:grid-cols-3 gap-10">
@@ -72,20 +72,20 @@
                     <div class="bg-white p-8 rounded-3xl shadow-sm border border-gray-100 flex items-start gap-4">
                         <div
                             class="w-12 h-12 bg-primary-50 text-primary-500 rounded-xl flex items-center justify-center shrink-0">
-                            <span class="text-xl">📍</span>
+                            <span class="text-xl">ðŸ“</span>
                         </div>
                         <div>
-                            <h3 class="font-bold text-secondary font-heading text-xl mb-1">Visítanos</h3>
-                            <p class="text-gray-600 text-sm">Av. de la Visión 123,<br>Centro Oftalmológico, CP 1000</p>
+                            <h3 class="font-bold text-secondary font-heading text-xl mb-1">VisÃ­tanos</h3>
+                            <p class="text-gray-600 text-sm">Av. de la VisiÃ³n 123,<br>Centro OftalmolÃ³gico, CP 1000</p>
                         </div>
                     </div>
                     <div class="bg-white p-8 rounded-3xl shadow-sm border border-gray-100 flex items-start gap-4">
                         <div
                             class="w-12 h-12 bg-primary-50 text-primary-500 rounded-xl flex items-center justify-center shrink-0">
-                            <span class="text-xl">📞</span>
+                            <span class="text-xl">ðŸ“ž</span>
                         </div>
                         <div>
-                            <h3 class="font-bold text-secondary font-heading text-xl mb-1">Llámanos</h3>
+                            <h3 class="font-bold text-secondary font-heading text-xl mb-1">LlÃ¡manos</h3>
                             <p class="text-gray-600 text-sm">Urgencias:<br><span class="font-bold text-primary-600">+1
                                     234 567 890</span></p>
                         </div>
@@ -104,7 +104,7 @@
                                     <label class="block text-sm font-medium text-gray-700 mb-2">DNI del Paciente *</label>
                                     <input type="text" id="dni_paciente" maxlength="8" required
                                         class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:ring-2 focus:ring-primary-500 outline-none transition-all"
-                                        placeholder="Ingresa los 8 dígitos">
+                                        placeholder="Ingresa los 8 dÃ­gitos">
                                 </div>
                                 <div>
                                     <label class="block text-sm font-medium text-gray-700 mb-2">Especialidad *</label>
@@ -135,21 +135,21 @@
                                     <label class="block text-sm font-medium text-gray-700 mb-2">Horarios Disponibles *</label>
                                     <select id="select-hora" required disabled
                                         class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:ring-2 focus:ring-primary-500 outline-none transition-all bg-white disabled:bg-gray-50 disabled:text-gray-400">
-                                        <option value="" disabled selected>Elige médico y fecha</option>
+                                        <option value="" disabled selected>Elige mÃ©dico y fecha</option>
                                     </select>
-                                    <p id="msg-dispo" class="text-[10px] mt-1 text-gray-400 italic">Horario de atención: 9:00 AM - 9:00 PM</p>
+                                    <p id="msg-dispo" class="text-[10px] mt-1 text-gray-400 italic">Horario de atenciÃ³n: 9:00 AM - 9:00 PM</p>
                                 </div>
                                 <div>
                                     <label class="block text-sm font-medium text-gray-700 mb-2">Motivo de la consulta</label>
                                     <input type="text" id="motivo"
                                         class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:ring-2 focus:ring-primary-500 outline-none transition-all"
-                                        placeholder="Ej. Revisión anual">
+                                        placeholder="Ej. RevisiÃ³n anual">
                                 </div>
                             </div>
 
                             <button type="submit" id="btn-submit"
                                 class="w-full bg-primary-500 hover:bg-primary-600 text-white font-bold py-4 rounded-xl transition-all shadow-lg shadow-primary-500/30 text-lg flex items-center justify-center gap-2">
-                                📅 Confirmar y Reservar Cita
+                                ðŸ“… Confirmar y Reservar Cita
                             </button>
                         </form>
                     </div>
@@ -199,15 +199,15 @@
                     selectEsp.appendChild(opt);
                 });
             } catch (error) {
-                console.error('Error cargando médicos');
+                console.error('Error cargando mÃ©dicos');
             }
 
-            // Al cambiar especialidad, filtrar médicos
+            // Al cambiar especialidad, filtrar mÃ©dicos
             selectEsp.addEventListener('change', () => {
                 const esp = selectEsp.value;
                 const filtered = allMedicos.filter(m => m.especialidad === esp);
                 
-                selectMed.innerHTML = '<option value="" disabled selected>Selecciona un médico</option>';
+                selectMed.innerHTML = '<option value="" disabled selected>Selecciona un mÃ©dico</option>';
                 filtered.forEach(m => {
                     const opt = document.createElement('option');
                     opt.value = m.id_medico;
@@ -216,10 +216,10 @@
                 });
                 selectMed.disabled = false;
                 selectHora.disabled = true;
-                selectHora.innerHTML = '<option value="" disabled selected>Elige médico y fecha</option>';
+                selectHora.innerHTML = '<option value="" disabled selected>Elige mÃ©dico y fecha</option>';
             });
 
-            // Al cambiar médico o fecha, cargar horarios
+            // Al cambiar mÃ©dico o fecha, cargar horarios
             [selectMed, inputFecha].forEach(el => {
                 el.addEventListener('change', cargarHorarios);
             });
@@ -262,19 +262,19 @@
                 }
             }
 
-            // Envío
+            // EnvÃ­o
             document.getElementById('form-cita').addEventListener('submit', async (e) => {
                 e.preventDefault();
                 
-                // 1. Primero validar que el DNI exista (o registrarlo, pero aquí asumimos que ya existe para simplificar)
-                // En una app real buscaríamos el id_paciente por DNI
+                // 1. Primero validar que el DNI exista (o registrarlo, pero aquÃ­ asumimos que ya existe para simplificar)
+                // En una app real buscarÃ­amos el id_paciente por DNI
                 const dni = inputDni.value;
                 try {
                     const resPac = await fetch(`/api/citas/buscar/${dni}`, { headers: { 'Authorization': `Bearer ${token}` } });
                     const dataPac = await resPac.json();
                     
                     if (!dataPac.found) {
-                        UI.showToast('El DNI ingresado no está registrado como paciente.', 'error');
+                        UI.showToast('El DNI ingresado no estÃ¡ registrado como paciente.', 'error');
                         return;
                     }
 
@@ -294,14 +294,14 @@
 
                     const result = await res.json();
                     if (res.ok) {
-                        UI.showToast('¡Cita programada con éxito!', 'success');
+                        UI.showToast('Â¡Cita programada con Ã©xito!', 'success');
                         setTimeout(() => window.location.href = './index.html', 1500);
                     } else {
                         UI.showToast(result.error || 'Error al programar', 'error');
                         cargarHorarios(); // Refrescar por si le ganaron el turno
                     }
                 } catch (error) {
-                    UI.showToast('Error de conexión', 'error');
+                    UI.showToast('Error de conexiÃ³n', 'error');
                 }
             });
         });
@@ -319,24 +319,24 @@
                         <span class="font-heading font-bold text-xl tracking-tight">Vital<span
                                 class="text-primary-500">Salud</span></span>
                     </div>
-                    <p class="text-gray-400 mb-6 text-sm">Tu bienestar visual es nuestra vocación. Cuidamos de tus ojos
-                        con precisión y profesionalismo.</p>
+                    <p class="text-gray-400 mb-6 text-sm">Tu bienestar visual es nuestra vocaciÃ³n. Cuidamos de tus ojos
+                        con precisiÃ³n y profesionalismo.</p>
                 </div>
 
                 <div>
                     <h4 class="font-bold mb-6 font-heading text-lg">Especialidades</h4>
                     <ul class="space-y-3 text-gray-400 text-sm">
-                        <li><a href="#" class="hover:text-primary-400 transition-colors">Cirugía Láser</a></li>
+                        <li><a href="#" class="hover:text-primary-400 transition-colors">CirugÃ­a LÃ¡ser</a></li>
                         <li><a href="#" class="hover:text-primary-400 transition-colors">Cataratas</a></li>
                         <li><a href="#" class="hover:text-primary-400 transition-colors">Glaucoma</a></li>
-                        <li><a href="#" class="hover:text-primary-400 transition-colors">Retina y Vítreo</a></li>
-                        <li><a href="#" class="hover:text-primary-400 transition-colors">Oftalmología Pediátrica</a>
+                        <li><a href="#" class="hover:text-primary-400 transition-colors">Retina y VÃ­treo</a></li>
+                        <li><a href="#" class="hover:text-primary-400 transition-colors">OftalmologÃ­a PediÃ¡trica</a>
                         </li>
                     </ul>
                 </div>
 
                 <div>
-                    <h4 class="font-bold mb-6 font-heading text-lg">Clínica</h4>
+                    <h4 class="font-bold mb-6 font-heading text-lg">ClÃ­nica</h4>
                     <ul class="space-y-3 text-gray-400 text-sm">
                         <li><a href="./especialistas.html" class="hover:text-primary-400 transition-colors">Sobre
                                 Nosotros</a></li>
@@ -344,7 +344,7 @@
                                 class="hover:text-primary-400 transition-colors">Instalaciones</a></li>
                         <li><a href="./blog.html" class="hover:text-primary-400 transition-colors">Blog de Salud
                                 Visual</a></li>
-                        <li><a href="./contacto.html" class="hover:text-primary-400 transition-colors">Contacto</a></li>
+                        <li><a href="./agendar.html" class="hover:text-primary-400 transition-colors">Contacto</a></li>
                     </ul>
                 </div>
 
@@ -352,11 +352,11 @@
                     <h4 class="font-bold mb-6 font-heading text-lg">Contacto</h4>
                     <ul class="space-y-4 text-gray-400 text-sm">
                         <li class="flex items-start gap-3">
-                            <span class="mt-1">📍</span>
-                            <span>Av. de la Visión 123,<br>Centro Oftalmológico, CP 1000</span>
+                            <span class="mt-1">ðŸ“</span>
+                            <span>Av. de la VisiÃ³n 123,<br>Centro OftalmolÃ³gico, CP 1000</span>
                         </li>
                         <li class="flex items-center gap-3">
-                            <span>📞</span>
+                            <span>ðŸ“ž</span>
                             <span>+51 999 999 999</span>
                         </li>
                     </ul>
@@ -364,7 +364,7 @@
             </div>
             <div
                 class="border-t border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-gray-500">
-                <p>&copy; 2026 VitalSalud Clínica Oftalmológica. Todos los derechos reservados.</p>
+                <p>&copy; 2026 VitalSalud ClÃ­nica OftalmolÃ³gica. Todos los derechos reservados.</p>
             </div>
         </div>
     </footer>
