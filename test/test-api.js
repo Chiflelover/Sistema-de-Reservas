@@ -1,10 +1,10 @@
 // test-api.js
 async function ejecutarPrueba() {
-    console.log("⏳ Iniciando prueba de unidad con Autenticación...");
+    console.log("Iniciando prueba de unidad con Autenticación...");
 
     // 1. Credenciales falsas para obtener el pase VIP (Token)
     const credenciales = {
-        correo: "luci@clinica.com", // ¡Cambiamos el correo para crear un usuario nuevo!
+        correo: "luci@clinica.com",
         password: "password123"
     };
 
@@ -26,16 +26,16 @@ async function ejecutarPrueba() {
 
         const loginDatos = await loginRes.json();
 
-        // Si el login falla, detenemos la prueba
+        // Si el login falla detiene la prueba
         if (!loginDatos.token) {
-            console.error("❌ Error de autenticación", loginDatos);
+            console.error("Error de autenticación", loginDatos);
             return;
         }
 
         const token = loginDatos.token;
-        console.log("✅ ¡Pase VIP (Token) obtenido exitosamente!");
+        console.log("Token obtenido exitosamente");
 
-        // 3. Ahora sí, intentamos guardar al paciente usando nuestro Token
+        // 3.guardar al paciente 
         const pacientePrueba = {
             dni: "88888890",
             nombres: "Luci",
@@ -45,29 +45,29 @@ async function ejecutarPrueba() {
             fecha_nacimiento: "2005-01-01"
         };
 
-        console.log("📦 Enviando datos del paciente al servidor...");
+        console.log("Enviando datos del paciente al servidor...");
         const respuesta = await fetch('http://localhost:3000/api/pacientes', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
-                'Authorization': `Bearer ${token}` // Aquí presentamos la credencial al guardia
+                'Authorization': `Bearer ${token}`
             },
             body: JSON.stringify(pacientePrueba)
         });
 
         const datos = await respuesta.json();
 
-        // 4. Evaluamos el resultado final
+        // 4.resultado final
         if (respuesta.status === 201) {
-            console.log("✅ PRUEBA EXITOSA: El paciente se guardó superando la seguridad.");
+            console.log("PRUEBA EXITOSA :) El paciente se guardó superando la seguridad.");
         } else if (respuesta.status === 400 && datos.error && datos.error.includes("DNI")) {
-            console.log("✅ PRUEBA EXITOSA (Validación): El servidor rechazó el duplicado correctamente.");
+            console.log("PRUEBA EXITOSA (Validación) :) El servidor rechazó el duplicado correctamente.");
         } else {
-            console.error("❌ PRUEBA FALLIDA al crear paciente:", datos);
+            console.error("PRUEBA FALLIDA al crear paciente:", datos);
         }
 
     } catch (error) {
-        console.error("❌ ERROR CRÍTICO de conexión:", error.message);
+        console.error("ERROR CRÍTICO de conexión:", error.message);
     }
 }
 

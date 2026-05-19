@@ -14,11 +14,11 @@ const getMedicos = async (req, res) => {
 // Crear un nuevo médico
 const createMedico = async (req, res) => {
     const { dni, num_colegiatura, nombres, apellidos, especialidad, telefono } = req.body;
-    
-    // Obtener la URL de la imagen si se subió
+
+    // Obtener la URL de la imagen 
     let imagen_url = null;
     if (req.file) {
-        // Guardamos la ruta relativa que el frontend puede usar
+
         imagen_url = `/img/medicos/${req.file.filename}`;
     }
 
@@ -29,7 +29,7 @@ const createMedico = async (req, res) => {
 
     const dniRegex = /^\d{8}$/;
     if (!dniRegex.test(dni)) {
-        return res.status(400).json({ error: 'El DNI debe tener exactamente 8 dígitos numéricos' });
+        return res.status(400).json({ error: 'El DNI debe tener exactamente 8 digitos numericos' });
     }
 
     try {
@@ -39,23 +39,23 @@ const createMedico = async (req, res) => {
             RETURNING *
         `;
         const values = [dni, num_colegiatura, nombres, apellidos, especialidad, telefono, imagen_url];
-        
+
         const result = await pool.query(queryInsert, values);
-        
+
         res.status(201).json({
-            message: 'Médico registrado exitosamente',
+            message: 'Medico registrado exitosamente',
             medico: result.rows[0]
         });
     } catch (error) {
         console.error('CRITICAL ERROR in createMedico:', error);
-        
+
         if (error.code === '23505') {
-            return res.status(400).json({ error: 'El DNI o CMP ya se encuentra registrado' });
+            return res.status(400).json({ error: 'El DNI, CMP o Telefono ya se encuentra registrado' });
         }
 
-        res.status(500).json({ 
-            error: 'Error interno del servidor', 
-            details: error.message 
+        res.status(500).json({
+            error: 'Error interno del servidor',
+            details: error.message
         });
     }
 };
@@ -65,7 +65,7 @@ const deleteMedico = async (req, res) => {
     const { id } = req.params;
     try {
         const result = await pool.query('DELETE FROM medicos WHERE id_medico = $1 RETURNING *', [id]);
-        
+
         if (result.rows.length === 0) {
             return res.status(404).json({ error: 'Médico no encontrado' });
         }
