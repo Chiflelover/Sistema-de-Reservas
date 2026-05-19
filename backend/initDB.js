@@ -10,7 +10,7 @@ async function implementarBaseDeDatos() {
         await client.connect();
         console.log("Conectando a la base de datos en la nube...");
 
-        // Script SQL completo para el Sprint 1
+        // Script SQL 
         const sql = `
             -- 1. Tabla de Pacientes
             CREATE TABLE IF NOT EXISTS pacientes (
@@ -18,14 +18,14 @@ async function implementarBaseDeDatos() {
                 dni VARCHAR(8) UNIQUE NOT NULL,
                 nombres VARCHAR(100) NOT NULL,
                 apellidos VARCHAR(100) NOT NULL,
-                telefono VARCHAR(15) NOT NULL,
+                telefono VARCHAR(15) UNIQUE NOT NULL,
                 correo VARCHAR(150),
                 fecha_nacimiento DATE,
                 estado VARCHAR(20) DEFAULT 'Activo',
                 fecha_registro TIMESTAMP DEFAULT CURRENT_TIMESTAMP
             );
 
-            -- 1.5. Tabla de Usuarios (Para Login)
+            -- 2. Tabla de Usuarios (Para Login)
             CREATE TABLE IF NOT EXISTS usuarios (
                 id_usuario SERIAL PRIMARY KEY,
                 correo VARCHAR(150) UNIQUE NOT NULL,
@@ -35,7 +35,7 @@ async function implementarBaseDeDatos() {
                 fecha_registro TIMESTAMP DEFAULT CURRENT_TIMESTAMP
             );
 
-            -- 2. Tabla de Medicos
+            -- 3. Tabla de Medicos
             CREATE TABLE IF NOT EXISTS medicos (
                 id_medico SERIAL PRIMARY KEY,
                 dni VARCHAR(8) UNIQUE,
@@ -43,11 +43,11 @@ async function implementarBaseDeDatos() {
                 nombres VARCHAR(100) NOT NULL,
                 apellidos VARCHAR(100) NOT NULL,
                 especialidad VARCHAR(100) NOT NULL,
-                telefono VARCHAR(15) NOT NULL,
+                telefono VARCHAR(15) UNIQUE NOT NULL,
                 imagen_url VARCHAR(255)
             );
 
-            -- 3. Tabla de Citas (Relaciona pacientes y medicos)
+            -- 4. Tabla de Citas (Relaciona pacientes y medicos)
             CREATE TABLE IF NOT EXISTS citas (
                 id_cita SERIAL PRIMARY KEY,
                 id_paciente INT REFERENCES pacientes(id_paciente) ON DELETE CASCADE,
@@ -60,7 +60,7 @@ async function implementarBaseDeDatos() {
         `;
 
         await client.query(sql);
-        console.log("✅ ¡Éxito! Tablas 'pacientes', 'medicos' y 'citas' creadas correctamente.");
+        console.log("✅ ¡Éxito! Tablas creadas correctamente.");
     } catch (error) {
         console.error("❌ Error al implementar la base de datos:", error);
     } finally {
