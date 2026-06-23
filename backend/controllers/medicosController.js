@@ -1,5 +1,24 @@
 const pool = require('../config/db');
 
+// Obtener especialidades únicas (endpoint público)
+const getEspecialidades = async (req, res) => {
+    try {
+        const result = await pool.query(`
+            SELECT
+                especialidad AS nombre,
+                COUNT(*) AS total_medicos,
+                ARRAY_AGG(nombres || ' ' || apellidos) AS medicos
+            FROM medicos
+            GROUP BY especialidad
+            ORDER BY especialidad ASC
+        `);
+        res.json(result.rows);
+    } catch (error) {
+        console.error('Error in getEspecialidades:', error);
+        res.status(500).json({ error: 'Error del servidor al obtener especialidades' });
+    }
+};
+
 // Obtener todos los médicos
 const getMedicos = async (req, res) => {
     try {
@@ -30,6 +49,16 @@ const createMedico = async (req, res) => {
     const dniRegex = /^\d{8}$/;
     if (!dniRegex.test(dni)) {
         return res.status(400).json({ error: 'El DNI debe tener exactamente 8 digitos numericos' });
+    }
+
+    const cmpRegex = /^\d{4,6}$/;
+    if (!cmpRegex.test(num_colegiatura)) {
+        return res.status(400).json({ error: 'El CMP debe contener entre 4 y 6 cifras numéricas' });
+    }
+
+    const telefonoRegex = /^\d{9}$/;
+    if (!telefonoRegex.test(telefono)) {
+        return res.status(400).json({ error: 'El teléfono debe tener exactamente 9 dígitos numéricos' });
     }
 
     try {
@@ -80,5 +109,6 @@ const deleteMedico = async (req, res) => {
 module.exports = {
     getMedicos,
     createMedico,
-    deleteMedico
+    deleteMedico,
+    getEspecialidades
 };

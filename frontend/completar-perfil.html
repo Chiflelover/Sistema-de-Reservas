@@ -1,164 +1,486 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
+
+
 <html lang="es">
+
+
 <head>
+
+
     <meta charset="UTF-8">
+
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
     <title>Completar Perfil - VitalSalud</title>
+
+
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;700;800&display=swap" rel="stylesheet">
+
+
     <link rel="stylesheet" href="./css/global.css">
+
+
     <script src="https://cdn.tailwindcss.com"></script>
+
+
     <script>
+
+
         tailwind.config = {
+
+
             theme: {
+
+
                 extend: {
+
+
                     fontFamily: { sans: ['Inter', 'sans-serif'], heading: ['Outfit', 'sans-serif'] },
+
+
                     colors: {
+
+
                         primary: { 50: 'var(--color-primary-50)', 100: 'var(--color-primary-100)', 500: 'var(--color-primary-500)', 600: 'var(--color-primary-600)', 700: 'var(--color-primary-700)' },
+
+
                         secondary: 'var(--color-secondary)',
+
+
                     }
+
+
                 }
+
+
             }
+
+
         }
+
+
     </script>
+
+
     <script src="./js/ui-utils.js"></script>
+
+
 </head>
+
+
 <body class="font-sans text-gray-800 bg-gray-50 min-h-screen flex flex-col selection:bg-primary-500 selection:text-white">
 
+
+
+
+
     <nav class="w-full z-50 glass shadow-sm py-4 fixed top-0">
+
+
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center">
+
+
             <a href="./index.html" class="flex items-center gap-2 cursor-pointer">
+
+
                 <div class="w-10 h-10 bg-primary-500 text-white rounded-xl flex items-center justify-center font-bold text-2xl shadow-lg shadow-primary-500/30">V</div>
+
+
                 <span class="font-heading font-bold text-2xl tracking-tight text-secondary">Vital<span class="text-primary-500">Salud</span></span>
+
+
             </a>
-            <button id="logout-btn" class="text-sm font-medium text-gray-500 hover:text-red-500 transition-colors">Cerrar SesiÃ³n</button>
+
+
+            <button id="logout-btn" class="text-sm font-medium text-gray-500 hover:text-red-500 transition-colors">Cerrar Sesión</button>
+
+
         </div>
+
+
     </nav>
 
+
+
+
+
     <div class="flex-grow flex items-center justify-center pt-24 pb-12 px-4">
+
+
         <div class="bg-white p-8 md:p-10 rounded-3xl shadow-xl w-full max-w-2xl border border-gray-100">
+
+
             <div class="text-center mb-8">
+
+
                 <h2 class="text-3xl font-heading font-bold text-secondary mb-2">Completar Perfil</h2>
-                <p class="text-gray-500 text-sm">Por favor, necesitamos tus datos personales para agendar tus citas mÃ©dicas. (HU-01)</p>
+
+
+                <p class="text-gray-500 text-sm">Por favor, necesitamos tus datos personales para agendar tus citas médicas. (HU-01)</p>
+
+
             </div>
 
 
 
+
+
+
+
+
+
+
+
             <form id="perfil-form" class="space-y-6">
+
+
                 
+
+
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+
+
                     <div>
+
+
                         <label for="nombres" class="block text-sm font-medium text-gray-700 mb-1">Nombres <span class="text-red-500">*</span></label>
+
+
                         <input type="text" id="nombres" name="nombres" required class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:ring-2 focus:ring-primary-500 focus:border-primary-500 outline-none transition-all">
+
+
                     </div>
+
+
                     <div>
+
+
                         <label for="apellidos" class="block text-sm font-medium text-gray-700 mb-1">Apellidos <span class="text-red-500">*</span></label>
+
+
                         <input type="text" id="apellidos" name="apellidos" required class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:ring-2 focus:ring-primary-500 focus:border-primary-500 outline-none transition-all">
+
+
                     </div>
+
+
                 </div>
 
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <div>
-                        <label for="dni" class="block text-sm font-medium text-gray-700 mb-1">DNI (8 dÃ­gitos) <span class="text-red-500">*</span></label>
-                        <input type="text" id="dni" name="dni" required pattern="\d{8}" maxlength="8" title="El DNI debe tener exactamente 8 dÃ­gitos" class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:ring-2 focus:ring-primary-500 focus:border-primary-500 outline-none transition-all">
-                    </div>
-                    <div>
-                        <label for="telefono" class="block text-sm font-medium text-gray-700 mb-1">TelÃ©fono <span class="text-red-500">*</span></label>
-                        <input type="tel" id="telefono" name="telefono" required pattern="\d+" title="Solo se permiten nÃºmeros" class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:ring-2 focus:ring-primary-500 focus:border-primary-500 outline-none transition-all">
-                    </div>
-                </div>
+
+
+
 
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+
+
                     <div>
+
+
+                        <label for="dni" class="block text-sm font-medium text-gray-700 mb-1">DNI (8 dígitos) <span class="text-red-500">*</span></label>
+
+
+                        <input type="text" id="dni" name="dni" required pattern="\d{8}" maxlength="8" title="El DNI debe tener exactamente 8 dígitos" class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:ring-2 focus:ring-primary-500 focus:border-primary-500 outline-none transition-all">
+
+
+                    </div>
+
+
+                    <div>
+
+
+                        <label for="telefono" class="block text-sm font-medium text-gray-700 mb-1">Teléfono <span class="text-red-500">*</span></label>
+
+
+                        <input type="tel" id="telefono" name="telefono" required pattern="\d{9}" maxlength="9" title="El teléfono debe tener exactamente 9 dígitos" class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:ring-2 focus:ring-primary-500 focus:border-primary-500 outline-none transition-all">
+
+
+                    </div>
+
+
+                </div>
+
+
+
+
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+
+
+                    <div>
+
+
                         <label for="fecha_nacimiento" class="block text-sm font-medium text-gray-700 mb-1">Fecha de Nacimiento</label>
+
+
                         <input type="date" id="fecha_nacimiento" name="fecha_nacimiento" class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:ring-2 focus:ring-primary-500 focus:border-primary-500 outline-none transition-all text-gray-600">
+
+
                     </div>
+
+
                     <div>
-                        <label for="correo" class="block text-sm font-medium text-gray-700 mb-1">Correo ElectrÃ³nico</label>
+
+
+                        <label for="correo" class="block text-sm font-medium text-gray-700 mb-1">Correo Electrónico</label>
+
+
                         <input type="email" id="correo" name="correo" disabled class="w-full px-4 py-3 rounded-xl border border-gray-200 bg-gray-50 text-gray-500 outline-none cursor-not-allowed">
+
+
                         <p class="text-xs text-gray-400 mt-1">Vinculado a tu cuenta</p>
+
+
                     </div>
+
+
                 </div>
+
+
                 
+
+
                 <button type="submit" class="w-full bg-primary-500 hover:bg-primary-600 text-white font-semibold py-4 rounded-xl transition-all shadow-lg shadow-primary-500/30 transform hover:-translate-y-0.5 mt-4">
+
+
                     Guardar Datos
+
+
                 </button>
+
+
             </form>
+
+
         </div>
+
+
     </div>
 
+
+
+
+
     <script>
+
+
         document.addEventListener('DOMContentLoaded', () => {
+
+
             const token = localStorage.getItem('token');
+
+
             const userStr = localStorage.getItem('user');
 
+
+
+
+
             if (!token || !userStr) {
+
+
                 window.location.href = './login.html';
+
+
                 return;
+
+
             }
+
+
+
+
 
             const user = JSON.parse(userStr);
+
+
             document.getElementById('correo').value = user.correo;
 
+
+
+
+
             if(user.id_paciente) {
-                // Ya completÃ³ el perfil
+
+
+                // Ya completó el perfil
+
+
                 alert('Ya has completado tu perfil anteriormente.');
+
+
                 window.location.href = './index.html';
+
+
             }
+
+
         });
+
+
+
+
 
         document.getElementById('logout-btn').addEventListener('click', () => {
+
+
             localStorage.removeItem('token');
+
+
             localStorage.removeItem('user');
+
+
             window.location.href = './login.html';
+
+
         });
 
+
+
+
+
         document.getElementById('perfil-form').addEventListener('submit', async (e) => {
+
+
             e.preventDefault();
+
+
             
+
+
             const dni = document.getElementById('dni').value;
+
+
             const nombres = document.getElementById('nombres').value;
+
+
             const apellidos = document.getElementById('apellidos').value;
+
+
             const telefono = document.getElementById('telefono').value;
+
+
             const fecha_nacimiento = document.getElementById('fecha_nacimiento').value;
+
+
             
+
+
             const user = JSON.parse(localStorage.getItem('user'));
+
+
             const correo = user.correo;
+
+
             const token = localStorage.getItem('token');
+
+
+
+
 
             const alertDiv = document.getElementById('alert-message');
 
+
+
+
+
             try {
+
+
                 const response = await fetch('/api/pacientes', {
+
+
                     method: 'POST',
+
+
                     headers: { 
+
+
                         'Content-Type': 'application/json',
+
+
                         'Authorization': `Bearer ${token}`
+
+
                     },
+
+
                     body: JSON.stringify({ dni, nombres, apellidos, telefono, correo, fecha_nacimiento })
+
+
                 });
+
+
+
+
 
                 const data = await response.json();
 
+
+
+
+
                 if (!response.ok) {
+
+
                     UI.showToast(data.error || 'Error al guardar los datos', 'error');
+
+
                 } else {
-                    UI.showToast('Â¡Perfil completado con Ã©xito!', 'success');
-                    alertDiv.textContent = 'Â¡Perfil completado con Ã©xito!';
+
+
+                    UI.showToast('¡Perfil completado con éxito!', 'success');
+
+
+                    alertDiv.textContent = '¡Perfil completado con éxito!';
+
+
                     alertDiv.className = 'p-4 rounded-lg text-sm mb-6 border bg-green-50 text-green-600 border-green-100';
+
+
                     alertDiv.classList.remove('hidden');
 
+
+
+
+
                     // Actualizar el user en localstorage
+
+
                     user.id_paciente = data.id_paciente;
+
+
                     localStorage.setItem('user', JSON.stringify(user));
 
-                    setTimeout(() => {
-                        window.location.href = './index.html'; // Redirigir al dashboard/inicio
-                    }, 2000);
+
+
+
+
+                    window.location.href = './dashboard-paciente.html';
+
+
                 }
+
+
             } catch (error) {
-                UI.showToast('Error de conexiÃ³n con el servidor.', 'error');
+
+
+                UI.showToast('Error de conexión con el servidor.', 'error');
+
+
             }
+
+
         });
+
+
     </script>
+
+
 </body>
+
+
 </html>
+
+

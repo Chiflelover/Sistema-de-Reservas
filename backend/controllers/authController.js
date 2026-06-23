@@ -65,6 +65,15 @@ const login = async (req, res) => {
             return res.status(400).json({ error: 'Credenciales inválidas' });
         }
 
+        let linkedPacienteId = user.id_paciente;
+        if (user.rol === 'paciente' && !linkedPacienteId) {
+            const pacienteByCorreo = await pool.query('SELECT id_paciente FROM pacientes WHERE correo = $1', [user.correo]);
+            if (pacienteByCorreo.rows.length > 0) {
+                linkedPacienteId = pacienteByCorreo.rows[0].id_paciente;
+                await pool.query('UPDATE usuarios SET id_paciente = $1 WHERE id_usuario = $2', [linkedPacienteId, user.id_usuario]);
+            }
+        }
+
         const token = jwt.sign(
             { id_usuario: user.id_usuario, rol: user.rol }, 
             JWT_SECRET, 
@@ -74,7 +83,7 @@ const login = async (req, res) => {
         res.json({
             message: 'Login exitoso',
             token,
-            user: { id_usuario: user.id_usuario, correo: user.correo, rol: user.rol, id_paciente: user.id_paciente }
+            user: { id_usuario: user.id_usuario, correo: user.correo, rol: user.rol, id_paciente: linkedPacienteId }
         });
     } catch (error) {
         console.error('Error in login:', error);

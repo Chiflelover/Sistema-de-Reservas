@@ -5,7 +5,7 @@ async function ejecutarPruebaMedico() {
     // 1. Datos del médico de prueba
     const medicoPrueba = {
         dni: "77777777",
-        num_colegiatura: "CMP00001",
+        num_colegiatura: "123456",
         nombres: "Gregory",
         apellidos: "House",
         especialidad: "Medicina Interna",

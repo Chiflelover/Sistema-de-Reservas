@@ -4,7 +4,7 @@ const pool = require('../config/db');
 const getCitas = async (req, res) => {
     try {
         const query = `
-            SELECT c.*, p.nombres as paciente_nombres, p.apellidos as paciente_apellidos, 
+            SELECT c.*, p.nombres as paciente_nombres, p.apellidos as paciente_apellidos, p.dni as paciente_dni, p.telefono as paciente_telefono, p.correo as paciente_correo,
                    m.nombres as medico_nombres, m.apellidos as medico_apellidos, m.especialidad
             FROM citas c
             JOIN pacientes p ON c.id_paciente = p.id_paciente
@@ -58,15 +58,15 @@ const createCita = async (req, res) => {
         }
 
         const query = `
-            INSERT INTO citas (id_paciente, id_medico, fecha_cita, hora_cita, motivo)
-            VALUES ($1, $2, $3, $4, $5)
+            INSERT INTO citas (id_paciente, id_medico, fecha_cita, hora_cita, motivo, estado_cita)
+            VALUES ($1, $2, $3, $4, $5, 'Pendiente de Pago')
             RETURNING *
         `;
         const values = [id_paciente, id_medico, fecha_cita, hora_cita, motivo];
         const result = await pool.query(query, values);
         
         res.status(201).json({
-            message: 'Cita programada exitosamente',
+            message: 'Cita programada exitosamente, pendiente de pago',
             cita: result.rows[0]
         });
     } catch (error) {
@@ -78,19 +78,85 @@ const createCita = async (req, res) => {
 // Obtener citas de un paciente específico
 const getCitasPaciente = async (req, res) => {
     const { id_paciente } = req.params;
+    const { id_usuario, rol } = req.user;
+
     try {
+        let targetPacienteId = id_paciente;
+
+        // Si el rol es paciente, forzamos a que solo pueda ver sus propias citas basándonos en el token de sesión
+        if (rol === 'paciente') {
+            const userCheck = await pool.query('SELECT id_paciente FROM usuarios WHERE id_usuario = $1', [id_usuario]);
+            if (userCheck.rows.length === 0 || !userCheck.rows[0].id_paciente) {
+                return res.status(403).json({ error: 'No tienes un perfil de paciente asociado' });
+            }
+            targetPacienteId = userCheck.rows[0].id_paciente;
+        }
+
         const query = `
             SELECT c.*, m.nombres as medico_nombres, m.apellidos as medico_apellidos, m.especialidad
             FROM citas c
             JOIN medicos m ON c.id_medico = m.id_medico
             WHERE c.id_paciente = $1
-            ORDER BY c.fecha_cita DESC
+            ORDER BY 
+                CASE WHEN c.fecha_cita >= CURRENT_DATE THEN 0 ELSE 1 END ASC,
+                CASE WHEN c.fecha_cita >= CURRENT_DATE THEN c.fecha_cita END ASC,
+                CASE WHEN c.fecha_cita < CURRENT_DATE THEN c.fecha_cita END DESC,
+                c.hora_cita ASC
         `;
-        const result = await pool.query(query, [id_paciente]);
+        const result = await pool.query(query, [targetPacienteId]);
         res.json(result.rows);
     } catch (error) {
         console.error('Error in getCitasPaciente:', error);
         res.status(500).json({ error: 'Error al obtener tus citas' });
+    }
+};
+
+// Obtener citas del paciente autenticado según el token
+const getCitasPacienteMe = async (req, res) => {
+    const { id_usuario, rol } = req.user;
+
+    try {
+        const userCheck = await pool.query('SELECT id_paciente, correo FROM usuarios WHERE id_usuario = $1', [id_usuario]);
+        if (userCheck.rows.length === 0) {
+            return res.status(403).json({ error: 'No tienes un perfil de paciente asociado' });
+        }
+
+        let targetPacienteId = userCheck.rows[0].id_paciente;
+        const userCorreo = userCheck.rows[0].correo;
+
+        if (targetPacienteId) {
+            const pacienteResult = await pool.query('SELECT correo FROM pacientes WHERE id_paciente = $1', [targetPacienteId]);
+            if (pacienteResult.rows.length === 0 || (userCorreo && pacienteResult.rows[0].correo !== userCorreo)) {
+                targetPacienteId = null;
+            }
+        }
+
+        if (!targetPacienteId) {
+            const pacienteByCorreo = await pool.query('SELECT id_paciente FROM pacientes WHERE correo = $1', [userCorreo]);
+            if (pacienteByCorreo.rows.length === 0) {
+                return res.status(403).json({ error: 'No tienes un perfil de paciente asociado' });
+            }
+
+            targetPacienteId = pacienteByCorreo.rows[0].id_paciente;
+            await pool.query('UPDATE usuarios SET id_paciente = $1 WHERE id_usuario = $2', [targetPacienteId, id_usuario]);
+        }
+
+        const query = `
+            SELECT c.*, m.nombres as medico_nombres, m.apellidos as medico_apellidos, m.especialidad
+            FROM citas c
+            JOIN medicos m ON c.id_medico = m.id_medico
+            WHERE c.id_paciente = $1
+            ORDER BY 
+                CASE WHEN c.fecha_cita >= CURRENT_DATE THEN 0 ELSE 1 END ASC,
+                CASE WHEN c.fecha_cita >= CURRENT_DATE THEN c.fecha_cita END ASC,
+                CASE WHEN c.fecha_cita < CURRENT_DATE THEN c.fecha_cita END DESC,
+                c.hora_cita ASC
+        `;
+        const result = await pool.query(query, [targetPacienteId]);
+        res.json(result.rows);
+    } catch (error) {
+        console.error('Error in getCitasPacienteMe:', error);
+        res.status(500).json({ error: 'Error al obtener tus citas autenticadas' });
     }
 };
 
@@ -99,7 +165,7 @@ const updateEstadoCita = async (req, res) => {
     const { id } = req.params;
     const { nuevo_estado } = req.body;
 
-    const estadosValidos = ['Pendiente', 'Atendido', 'No Asistió', 'Cancelada'];
+    const estadosValidos = ['Pendiente', 'Pendiente de Pago', 'Confirmada', 'Atendido', 'No Asistió', 'Cancelada'];
     if (!estadosValidos.includes(nuevo_estado)) {
         return res.status(400).json({ error: 'Estado no válido' });
     }
@@ -164,11 +230,58 @@ const getCitasByDNI = async (req, res) => {
     }
 };
 
+// Procesar el pago simulado de una cita
+const pagarCita = async (req, res) => {
+    const { id } = req.params;
+    const { nombre_titular, numero_tarjeta, expiracion, cvv } = req.body;
+
+    if (!nombre_titular || !numero_tarjeta || !expiracion || !cvv) {
+        return res.status(400).json({ error: 'Faltan datos de pago obligatorios' });
+    }
+
+    try {
+        // Generar código de boleta: 3 letras mayúsculas aleatorias y 4 números aleatorios
+        const letters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+        const numbers = '0123456789';
+        let codigo_boleta = '';
+        for (let i = 0; i < 3; i++) {
+            codigo_boleta += letters.charAt(Math.floor(Math.random() * letters.length));
+        }
+        for (let i = 0; i < 4; i++) {
+            codigo_boleta += numbers.charAt(Math.floor(Math.random() * numbers.length));
+        }
+
+        // Actualizar la cita a Confirmada y guardar el código de la boleta
+        const query = `
+            UPDATE citas 
+            SET estado_cita = 'Confirmada', codigo_boleta = $1 
+            WHERE id_cita = $2 
+            RETURNING *
+        `;
+        const result = await pool.query(query, [codigo_boleta, id]);
+
+        if (result.rows.length === 0) {
+            return res.status(404).json({ error: 'Cita no encontrada' });
+        }
+
+        res.json({
+            message: 'Pago Exitoso',
+            codigo_boleta,
+            cita: result.rows[0]
+        });
+    } catch (error) {
+        console.error('Error in pagarCita:', error);
+        res.status(500).json({ error: 'Error del servidor al procesar el pago' });
+    }
+};
+
 module.exports = {
     getCitas,
     createCita,
     getCitasPaciente,
+    getCitasPacienteMe,
     updateEstadoCita,
     getCitasByDNI,
-    getHorariosOcupados
+    getHorariosOcupados,
+    pagarCita
 };

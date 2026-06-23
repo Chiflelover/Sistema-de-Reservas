@@ -30,7 +30,7 @@ async function ejecutarPruebaCita() {
         const citaPrueba = {
             id_paciente: 1,
             id_medico: 2,
-            fecha_cita: "2026-06-01",
+            fecha_cita: "2026-07-01",
             hora_cita: "11:00:00",
             motivo: "Consulta general automatizada (Depuración)"
         };
